@@ -1,0 +1,14 @@
+# === GENERAL ===
+APP_NAME="bankapp"
+SERVICE_NAME="bankapp"
+REPO_URL="<insert>"
+BRANCH="main"
+APP_PORT=8080
+ARTIFACT_NAME="bankapp.jar"
+
+# === DB CONFIG ===
+DB_TYPE="mysql"        # mysql | postgres | mongodb
+DB_HOST="localhost"
+DB_PORT="3306"
+DB_NAME="bankappdb"
+
