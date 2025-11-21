@@ -97,6 +97,10 @@ func (c *SSHClient) Run(command string) (string, string, error) {
 	// 5. Run the command on the remote machine.
 	// Note: even if the command returns non-zero exit code,
 	//       err will be non-nil. So we still want stdout/stderr.
+	if err := session.Run(command); err != nil {
+		return stdoutBuf.String(), stderrBuf.String(),
+			fmt.Errorf("remote command failed: %w", err)
+	}
 
 	stdout := stdoutBuf.String()
 	stderr := stderrBuf.String()

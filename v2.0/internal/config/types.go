@@ -15,3 +15,10 @@ type AppConfig struct {
 	ServiceName string `json:"service_name" yaml:"service_name"`
 	AppPort     int    `json:"app_port" yaml:"app_port"`
 }
+
+// VM settings (where to deploy)
+type VMConfig struct {
+	Host string `yaml:"host"`
+	Port int    `yaml:"port"`
+	User string `yaml:"user"`
+}
