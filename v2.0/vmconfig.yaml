@@ -1,8 +1,0 @@
-host: "34.239.176.53"
-port: 22
-user: "ubuntu"
-
-# SSH Authentication
-ssh_key_path: "C:/Users/shashank676/Downloads/java-server.pem"
-ssh_key_passphrase: ""
-use_ssh_agent: true
