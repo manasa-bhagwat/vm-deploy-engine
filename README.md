@@ -1,76 +1,141 @@
+# 🌐 VM Deploy Engine
 
-# 🚀 VM Deploy Engine
+A lightweight, CNCF-inspired deployment engine that provisions Linux VMs, installs runtimes, configures databases, builds applications, and creates systemd-managed services — all from a predictable CLI workflow.
 
-*A lightweight, script-powered deployment engine for provisioning and deploying apps on Linux VMs.*
-
-This project is my attempt to understand **how real infrastructure tools work under the hood** — service lifecycle, builds, config management, DB provisioning, systemd automation, and secure scripting.
-
-It currently includes:
-
-* **v1.0** – baseline deployment script
-* **v1.1** – config-driven, secure multi-DB deploy engine
-* **v2.0 (upcoming)** – Go CLI rewrite
-
-📦 Repo: [https://github.com/manasa-bhagwat/vm-deploy-engine](https://github.com/manasa-bhagwat/vm-deploy-engine)
+This project is not just a tool — it is a **learning ground** for understanding how infrastructure automation works behind the scenes.
 
 ---
 
-# 🧭 Project Overview
+# 🚀 Why This Project Exists
 
-The goal of **VM Deploy Engine** is simple:
+Before using Terraform, Ansible, Kubernetes, or ArgoCD…  
+I wanted to understand:
 
-> Recreate the fundamentals behind real-world infra tools — manually, intentionally, and with complete understanding.
+- **How does a VM get prepared for deployment?**  
+- **How does a service actually start under systemd?**  
+- **How do tools provision databases under the hood?**  
+- **How does SSH automation really work?**  
+- **How do internal deployment platforms evolve over time?**
 
-Instead of relying on Ansible, Terraform, or Kubernetes from day one, this project builds the *mechanics* from scratch:
+The **VM Deploy Engine** is my way of rebuilding those fundamentals from scratch, intentionally and systematically.
 
-* Install runtimes
-* Configure databases
-* Build artifacts
-* Generate environment files
-* Create services
-* Automate deployments
-* Enforce secure patterns
+This repo now contains:
 
-It mirrors how early platform teams build internal deployment tools — step-by-step, scaling complexity over time.
-
----
-
-# ⭐ Features
-
-### ✔ v1.0 — Baseline Deployment Script
-
-* Java + MySQL installation
-* DB creation
-* Git clone using PAT
-* Build using Maven Wrapper
-* Normalize JAR
-* systemd service
-* env file generation
-
-### ✔ v1.1 — Secure, Config-Driven Multi-DB Engine
-
-* Central config file
-* Secure prompts (PAT + DB password hidden)
-* MySQL / PostgreSQL / MongoDB support
-* DB readiness detection
-* Strict bash safety (`set -euo pipefail`)
-* Cleaner structure
-* Root-owned env file with 600 perms
-
-### v2.0 — (Upcoming) Go CLI
-
-* Deploy / Status / Logs / Rollback commands
-* YAML config
-* SSH agent mode
-* Parallel deployments
-* Structured logs
-* Built-in audit logs
-* Cross-platform binaries
-
-
-## 📄 License
-
-MIT License — free for anyone to study, fork, and build upon.
+- **v1.x** → Shell-based deploy engine (complete lifecycle automation)  
+- **v2.x** → Go-based CLI rewrite (extensible, testable, platform-grade)
 
 ---
 
+# 🧭 Roadmap Overview
+
+### ✔ **v1.0.0 – Baseline Automation Script**
+Shell script that performs:
+
+- Install Java, Git, MySQL
+- Create DB + user
+- Clone repo using PAT
+- Build Spring Boot app with Maven Wrapper
+- Normalize JAR
+- Generate env file
+- Generate systemd service  
+- Launch the service predictably
+
+---
+
+### ✔ **v1.1.0 – Secure Config-Driven Multi-DB Engine**
+Improved Bash engine:
+
+- Central configuration file (`/etc/app-deploy.conf`)
+- Supports **MySQL**, **PostgreSQL**, **MongoDB**
+- Hidden prompts for PAT + DB credentials
+- DB readiness checks
+- Root-owned env file with 600 permissions  
+- Strict Bash safety — `set -euo pipefail`
+
+---
+
+### ✔ **v2.0.x – Go CLI Rewrite (CNCF Style)**  
+Rebuilt the entire engine using:
+
+- Structured Go module layout (`cmd/`, `internal/`, `pkg/`)
+- YAML configs (`appconfig.yaml`, `vmconfig.yaml`)
+- SSH automation via:
+  - private key auth
+  - passphrase support
+  - ssh-agent support
+- Remote command execution framework
+- Deploy orchestrator replicating every v1.x feature  
+- Now powered by **Cobra** (v2.0.5)
+
+The goal is to evolve this into a complete internal platform tool.
+
+---
+
+# ✨ Features (Current State)
+
+### 🟩 **Deployment Engine**
+- Install base packages
+- Provision DBs (MySQL/Postgres/MongoDB)
+- Clone repository with Git PAT
+- Maven-based build pipeline
+- systemd service generation
+- env file generation + permissions
+- Restart + lifecycle automation
+
+### 🟩 **Go CLI**
+- `vmdeploy deploy`
+- YAML config loading
+- Fully automated SSH workflow
+- Remote execution framework
+- Preflight system checks
+
+### 🟩 **Security**
+- No secrets stored locally  
+- Supports SSH agent / PEM / passphrase  
+- Root-only env file permissions
+
+---
+
+# ➕ Upcoming (v2.1+)
+
+- Multi-server deployments  
+- Parallel deployments  
+- Rollback mechanism  
+- DB schema migrations  
+- Structured logging  
+- Built-in audit trail  
+- Test suite + CI/CD  
+- Installable Homebrew + APT package  
+- Plugin architecture  
+
+---
+
+# 🧪 Philosophy
+
+This is **not** a production orchestrator (yet).
+This is my attempt to:
+
+- learn infra engineering deeply  
+- think like a platform architect  
+- design like CNCF projects  
+- iterate with real-world discipline  
+
+Every version teaches one real concept:
+deployment lifecycle, SSH, DB provisioning, packaging, or CLI design.
+
+---
+
+# 📄 License
+
+MIT License — free to modify, fork, extend.
+
+---
+
+# 🤝 Contributing
+
+Currently a single-developer project, but PRs, issues and RFC-style discussions are welcome.
+
+---
+
+If you're curious about how infra tools actually work,  
+this project might feel like home.

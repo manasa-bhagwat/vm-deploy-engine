@@ -2,7 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
-The format follows **Keep a Changelog** and this project adheres to **Semantic Versioning**.
+---
+
+## [v2.0.5] - 2025-11-27
+### Added
+- Introduced **Cobra-powered CLI** structure under `cmd/vmdeploy`.
+- Added root command and scalable command tree for future subcommands (`logs`, `status`, `rollback`, etc.).
+- Added full command initialization workflow using CNCF-style CLI patterns.
+- Added release-ready build structure compatible with multi-platform binary builds.
+
+### Changed
+- Migrated existing manual CLI routing logic to Cobra’s structured command model.
+- Updated project layout to align with Go CLI best practices (`cmd/`, `internal/`, `pkg/` separation).
+- Updated `main.go` to delegate command execution to Cobra instead of custom switch logic.
+
+### Fixed
+- Normalized CLI execution entrypoint and improved UX consistency.
+- Ensured correct argument/help handling across all commands.
+
+### Removed
+- Removed legacy manual argument parsing from v2.0.4.
+
 
 ---
 
