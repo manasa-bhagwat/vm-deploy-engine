@@ -21,4 +21,8 @@ type VMConfig struct {
 	Host string `yaml:"host"`
 	Port int    `yaml:"port"`
 	User string `yaml:"user"`
+
+	SSHKeyPath    string `yaml:"ssh_key_path"`
+	SSHPassphrase string `yaml:"ssh_key_passphrase"`
+	UseSSHAgent   bool   `yaml:"use_ssh_agent"`
 }

@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/manasa-bhagwat/vm-deploy-engine/v2/internal/config"
+	"github.com/manasa-bhagwat/vm-deploy-engine/v2/internal/deploy"
 	"github.com/manasa-bhagwat/vm-deploy-engine/v2/pkg/sshutil"
 )
 
@@ -48,15 +49,20 @@ func handleDeploy() {
 	}
 	fmt.Println("[INFO] VM config loaded: ", vmCfg.Host)
 
-	// Prompt for SSH password(not hidden yet - will be fixed later)
-	sshPass := readLine("SSH Password (visible for now): ")
+	/// Prompt for secrets
+	dbUser := readLine("DB Username: ")
+	dbPass := readLine("DB Password: ")
+	githubPAT := readLine("GitHub PAT: ")
 
 	// Build SSHConfig
 	sshCfg := sshutil.SSHConfig{
-		Host:     vmCfg.Host,
-		Port:     vmCfg.Port,
-		User:     vmCfg.User,
-		Password: sshPass,
+		Host: vmCfg.Host,
+		Port: vmCfg.Port,
+		User: vmCfg.User,
+
+		SSHKeyPath:    vmCfg.SSHKeyPath,
+		SSHPassphrase: vmCfg.SSHPassphrase,
+		UseSSHAgent:   vmCfg.UseSSHAgent,
 	}
 
 	client := sshutil.NewSSHClient(sshCfg)
@@ -80,22 +86,26 @@ func handleDeploy() {
 	fmt.Println("[INFO] Running remote connectivity check -> uname -a")
 	stdout, stderr, err := client.Run("uname -a")
 
-	fmt.Println("\n================ REMOTE OUTPUT ================")
-
 	if strings.TrimSpace(stdout) != "" {
 		fmt.Println("[REMOTE STDOUT]: ", stdout)
 	}
 	if strings.TrimSpace(stderr) != "" {
 		fmt.Println("[REMOTE STDERR]:", stderr)
 	}
-	fmt.Println("===============================================\n")
-
 	if err != nil {
 		fmt.Println("[ERROR] Remote command failed:", err)
 		os.Exit(1)
 	}
+	fmt.Printf("[INFO] Successfully connected to remote server : %s", sshCfg.Host)
 
-	fmt.Println("[INFO] Remote system information received successfully.")
+	// NEW v2.0.4 — full deployment orchestrator
+	deployer := deploy.Deployer{Client: client}
+
+	fmt.Println("[INFO] Running full deployment pipeline...")
+	if err := deployer.RunFullDeployment(appCfg, dbUser, dbPass, githubPAT); err != nil {
+		fmt.Println("[ERROR] Deployment failed:", err)
+		os.Exit(1)
+	}
 
 }
 

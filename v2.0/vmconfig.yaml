@@ -1,7 +1,8 @@
-host: "13.222.8.124"
+host: "34.239.176.53"
 port: 22
 user: "ubuntu"
 
-# Future:
-# os_type: "ubuntu"
-# ssh_key_path: "~/.ssh/id_rsa"
+# SSH Authentication
+ssh_key_path: "C:/Users/shashank676/Downloads/java-server.pem"
+ssh_key_passphrase: ""
+use_ssh_agent: true

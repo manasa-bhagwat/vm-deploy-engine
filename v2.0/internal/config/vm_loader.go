@@ -22,5 +22,9 @@ func LoadVMConfig(path string) (*VMConfig, error) {
 		return nil, fmt.Errorf("invalid vm config: missing host/user/port")
 	}
 
+	if cfg.SSHKeyPath == "" && !cfg.UseSSHAgent {
+		return nil, fmt.Errorf("vm config invalid: either ssh_key_path or use_ssh_agent must be set")
+	}
+
 	return &cfg, nil
 }
