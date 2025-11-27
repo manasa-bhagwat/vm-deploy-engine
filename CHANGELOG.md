@@ -6,6 +6,43 @@ The format follows **Keep a Changelog** and this project adheres to **Semantic V
 
 ---
 
+## [v2.0.4] - 2025-11-27
+### Added
+- Introduced complete deployment orchestration pipeline in `internal/deploy/steps.go`.
+- Added modular operators for:
+  - Base package installation (`Installer`)
+  - Multi-DB provisioning (MySQL, PostgreSQL, MongoDB) via `DBInstaller`
+  - Repository cloning using Git with PAT injection (`GitOps`)
+  - Maven-based application build (`MavenOps`)
+  - systemd environment file + service generation (`SystemdOps`)
+- Implemented `Deployer.RunFullDeployment()` to execute full install → clone → build → configure → service lifecycle.
+- Added key-based SSH authentication support:
+  - `SSHConfig.SSHKeyPath`
+  - `SSHConfig.SSHPassphrase`
+  - `SSHConfig.UseSSHAgent`
+- Implemented SSH private key parsing:
+  - Unencrypted key parsing
+  - Encrypted key parsing (`ParsePrivateKeyWithPassphrase`)
+  - ssh-agent signer discovery (`SSH_AUTH_SOCK`)
+- Improved VM config structure (`vmconfig.yaml`) to support modern infra-style SSH workflows.
+
+### Changed
+- Migrated SSH authentication away from password-based auth to key-based workflows.
+- Updated `main.go` to:
+  - Prompt only for non-secret runtime inputs (DB creds + PAT)
+  - Build new SSH client with key-based config
+  - Invoke full deployment pipeline instead of standalone commands
+- Updated `appconfig.yaml` and `vmconfig.yaml` loading logic to align with new orchestrator.
+
+### Fixed
+- Ensured correct remote Maven permissions by guaranteeing `/opt/app` creation and ownership.
+- Fixed remote execution output formatting and handling of empty stderr/stdout streams.
+
+### Removed
+- Removed legacy password-based SSH authentication paths.
+
+---
+
 ## [v2.0.3] - 2025-11-22
 ### Added
 - Introduced initial `vmdeploy` CLI with the `deploy` command.
