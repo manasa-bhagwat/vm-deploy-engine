@@ -1,10 +1,10 @@
-# 🧭 vmdeploy RUNBOOK
+# vmdeploy RUNBOOK
 Operational guide for deploying, debugging, and operating **vmdeploy v2.0.5**.  
 This runbook is written for Infra/Platform engineers to execute, diagnose, and recover vmdeploy deployments safely.
 
 ---
 
-# 📌 1. Overview
+# 1. Overview
 `vmdeploy` is a Go-based CLI tool that deploys applications to Linux VMs over SSH.
 
 It performs:
@@ -21,7 +21,7 @@ This runbook documents **how to operate**, **troubleshoot**, and **recover** vmd
 
 ---
 
-# 📁 2. Prerequisites
+# 2. Prerequisites
 
 ### ✔️ Local machine
 - Go 1.22+
@@ -55,7 +55,7 @@ vmconfig.yaml
 
 ---
 
-# 📦 3. Installation
+# 3. Installation
 
 ### Option A — From source
 ```bash
@@ -88,7 +88,7 @@ vmdeploy version
 
 ---
 
-# ⚙️ 4. Configuration Files
+# 4. Configuration Files
 
 ## appconfig.yaml
 
@@ -124,7 +124,7 @@ use_ssh_agent: true
 
 ---
 
-# 🚀 5. Deploying an Application
+# 5. Deploying an Application
 
 Run:
 
@@ -156,7 +156,7 @@ curl http://<vm-ip>:8080/actuator/health
 
 ---
 
-# 🧔 6. Operational Procedures
+# 6. Operational Procedures
 
 ## Restart the app
 
@@ -184,7 +184,7 @@ ssh ubuntu@<vm> "ls -lah /opt/app/"
 
 ---
 
-# 🐛 7. Troubleshooting Guide
+# 7. Troubleshooting Guide
 
 ## 7.1 SSH Failures
 
@@ -289,7 +289,7 @@ cd /opt/app
 
 ---
 
-# 🔁 8. Recovery Procedures
+# 8. Recovery Procedures
 
 ## Roll back to previous JAR
 
@@ -312,7 +312,7 @@ ssh ubuntu@vm "sudo rm -rf /opt/app && sudo mkdir -p /opt/app"
 
 ---
 
-# 📘 9. Log Collection (for debugging / filing issues)
+# 9. Log Collection (for debugging / filing issues)
 
 Run:
 
@@ -329,7 +329,7 @@ ssh ubuntu@vm "
 
 ---
 
-# 🧪 10. Testing vmdeploy (Manual)
+# 10. Testing vmdeploy (Manual)
 
 ### ✔ Connectivity test
 
@@ -352,7 +352,7 @@ yq e '.' vmconfig.yaml
 
 ---
 
-# 📥 11. Upgrading vmdeploy
+# 11. Upgrading vmdeploy
 
 Update binary and re-run:
 
@@ -372,7 +372,7 @@ vmdeploy deploy
 
 ---
 
-# 📌 12. Maintenance Tasks
+# 12. Maintenance Tasks
 
 ### Clear old logs
 
@@ -392,7 +392,7 @@ ssh ubuntu@vm "sudo apt update -y && sudo apt upgrade -y"
 
 ---
 
-# 🧱 13. Known Limitations (as of v2.0.5)
+# 13. Known Limitations (as of v2.0.5)
 
 * No unit tests (coming in v2.1.x)
 * No rollback mechanism
@@ -402,7 +402,7 @@ ssh ubuntu@vm "sudo apt update -y && sudo apt upgrade -y"
 
 ---
 
-# 🏁 14. Appendices
+# 14. Appendices
 
 ## A. Port Reference
 
@@ -420,7 +420,7 @@ ssh ubuntu@vm "sudo apt update -y && sudo apt upgrade -y"
 
 ---
 
-# 🎯 Final Notes
+# Final Notes
 
 This runbook evolves with vmdeploy itself.
 As vmdeploy becomes more cloud-native (v2.1.x+), this document will expand to cover:

@@ -15,7 +15,7 @@ This document tracks the evolution of the tool across versions.
 
 ---
 
-## 🟦 v1.x — Bash Era (Learning Foundations)
+## v1.x — Bash Era (Learning Foundations)
 
 ### ✔ v1.0 — Baseline Deployment
 - Java installation
@@ -35,7 +35,7 @@ This document tracks the evolution of the tool across versions.
 
 ---
 
-## 🟦 v2.x — Go CLI Era (Real Tooling Begins)
+## v2.x — Go CLI Era (Real Tooling Begins)
 
 ### v2.0 — CLI Scaffolding
 - Implement CLI structure (`cmd/vmde`)
@@ -71,21 +71,21 @@ This document tracks the evolution of the tool across versions.
 
 ---
 
-## 🟦  v3.x — Secrets & Vault-Lite
+##  v3.x — Secrets & Vault-Lite
 - Encrypted secrets
 - Local keyring integration
 - Encrypted config files
 
 ---
 
-## 🟦 v4.x — GitOps & Reconciliation Lite
+## v4.x — GitOps & Reconciliation Lite
 - State file
 - Drift detection
 - Auto-sync mode
 
 ---
 
-## 🟦 Long-Term Ideas
+## Long-Term Ideas
 - Web UI dashboard
 - Buildpack-inspired architecture
 - Plugin model for runtimes

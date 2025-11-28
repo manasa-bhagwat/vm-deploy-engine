@@ -1,4 +1,4 @@
-# 🌐 VM Deploy Engine
+# VM Deploy Engine
 
 A lightweight, CNCF-inspired deployment engine that provisions Linux VMs, installs runtimes, configures databases, builds applications, and creates systemd-managed services — all from a predictable CLI workflow.
 
@@ -6,7 +6,7 @@ This project is not just a tool — it is a **learning ground** for understandin
 
 ---
 
-# 🚀 Why This Project Exists
+# Why This Project Exists
 
 Before using Terraform, Ansible, Kubernetes, or ArgoCD…  
 I wanted to understand:
@@ -26,7 +26,7 @@ This repo now contains:
 
 ---
 
-# 🧭 Roadmap Overview
+# Roadmap Overview
 
 ### ✔ **v1.0.0 – Baseline Automation Script**
 Shell script that performs:
@@ -71,9 +71,9 @@ The goal is to evolve this into a complete internal platform tool.
 
 ---
 
-# ✨ Features (Current State)
+# Features (Current State)
 
-### 🟩 **Deployment Engine**
+### **Deployment Engine**
 - Install base packages
 - Provision DBs (MySQL/Postgres/MongoDB)
 - Clone repository with Git PAT
@@ -82,21 +82,21 @@ The goal is to evolve this into a complete internal platform tool.
 - env file generation + permissions
 - Restart + lifecycle automation
 
-### 🟩 **Go CLI**
+### **Go CLI**
 - `vmdeploy deploy`
 - YAML config loading
 - Fully automated SSH workflow
 - Remote execution framework
 - Preflight system checks
 
-### 🟩 **Security**
+### **Security**
 - No secrets stored locally  
 - Supports SSH agent / PEM / passphrase  
 - Root-only env file permissions
 
 ---
 
-# ➕ Upcoming (v2.1+)
+# Upcoming (v2.1+)
 
 - Multi-server deployments  
 - Parallel deployments  
@@ -110,7 +110,7 @@ The goal is to evolve this into a complete internal platform tool.
 
 ---
 
-# 🧪 Philosophy
+# Philosophy
 
 This is **not** a production orchestrator (yet).
 This is my attempt to:
@@ -122,18 +122,6 @@ This is my attempt to:
 
 Every version teaches one real concept:
 deployment lifecycle, SSH, DB provisioning, packaging, or CLI design.
-
----
-
-# 📄 License
-
-MIT License — free to modify, fork, extend.
-
----
-
-# 🤝 Contributing
-
-Currently a single-developer project, but PRs, issues and RFC-style discussions are welcome.
 
 ---
 
