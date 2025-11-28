@@ -1,12 +1,12 @@
-app_name: bankapp
-repo_url: "https://github.com/manasa-bhagwat/java-app.git"
+app_name: <insert-app-name>
+repo_url: "<insert-repo-url>"
 branch: "main"
-artifact_name: "bankapp.jar"
+artifact_name: "<insert-app-name>.jar"
 
-db_type: "mysql"
+db_type: "<insert-dbtype>"
 db_host: "localhost"
-db_port: 3306
-db_name: "bankappdb"
+db_port: <insert-port>
+db_name: "<insert-db-name>"
 
-service_name: "bankapp"
-app_port: 8080
+service_name: "<insert-service-name>" # best - same as app_name
+app_port: <insert-port>
